@@ -56,3 +56,19 @@ $(document).keydown(function(event){
     }
   }
 })
+
+/*
+Clicchiamo sui pallini e mostriamo l'immagine corrispondente
+*/
+$('.fas').click(function(){
+  console.log($(this))
+  $('.nav > i').each(function(index){
+    $( this ).removeClass('active')
+    console.log(index)
+  })
+  $('.images > img').each(function(index){
+    $( this ).removeClass('active')
+  })
+  $( this ).addClass('active')
+  console.log($('.images > img').index)
+})
