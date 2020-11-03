@@ -30,9 +30,9 @@ $('.next').click(function(){
 
 })
 
-$('.slider-wrapper').keypress(function(){
-  console.log(e.which)
-  if(e.which === 37){
+$(document).keydown(function(event){
+  console.log(event.which)
+  if(event.which === 37){
     var actualImage=$('.active')
     console.log(actualImage)
     console.log(actualImage.attr("class"),typeof actualImage.attr("class"),actualImage.hasClass("first"))
@@ -44,7 +44,7 @@ $('.slider-wrapper').keypress(function(){
     }
   }
 
-  if(e.which === 39){
+  if(event.which === 39){
     var actualImage=$('.active')
     console.log(actualImage)
     console.log(actualImage.attr("class"),typeof actualImage.attr("class"),actualImage.hasClass("last"))
