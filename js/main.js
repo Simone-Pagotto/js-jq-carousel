@@ -6,53 +6,53 @@ Utilizziamo una classe active per aiutarci a capire quale è l'immagine attuale 
 */
 
 $('.prev').click(function(){
-  var actualImage=$('.active')
-  console.log(actualImage)
-  console.log(actualImage.attr("class"),typeof actualImage.attr("class"),actualImage.hasClass("first"))
-  if( actualImage.hasClass("first") === true){
-    actualImage.removeClass('active')
-    $('.last').addClass('active')
+  var currentImage=$('.active');
+  console.log(currentImage);
+  console.log(currentImage.attr("class"),typeof currentImage.attr("class"),currentImage.hasClass("first"));
+  if( currentImage.hasClass("first")){
+    currentImage.removeClass('active');
+    $('.last').addClass('active');
   } else {
-    actualImage.removeClass('active').prev().addClass('active')
+    currentImage.removeClass('active').prev().addClass('active');
   }
 })
 
 $('.next').click(function(){
-  var actualImage=$('.active')
-  console.log(actualImage)
-  console.log(actualImage.attr("class"),typeof actualImage.attr("class"),actualImage.hasClass("last"))
-  if( actualImage.hasClass("last") === true){
-    actualImage.removeClass('active')
-    $('.first').addClass('active')
+  var currentImage=$('.active');
+  console.log(currentImage);
+  console.log(currentImage.attr("class"),typeof currentImage.attr("class"),currentImage.hasClass("last"));
+  if( currentImage.hasClass("last")){
+    currentImage.removeClass('active');
+    $('.first').addClass('active');
   } else {
-    actualImage.removeClass('active').next().addClass('active')
+    currentImage.removeClass('active').next().addClass('active');
   }
 
 })
 
 $(document).keydown(function(event){
-  console.log(event.which)
+  console.log(event.which);
   if(event.which === 37){
-    var actualImage=$('.active')
-    console.log(actualImage)
-    console.log(actualImage.attr("class"),typeof actualImage.attr("class"),actualImage.hasClass("first"))
-    if( actualImage.hasClass("first") === true){
-      actualImage.removeClass('active')
-      $('.last').addClass('active')
+    var currentImage=$('.active');
+    console.log(currentImage);
+    console.log(currentImage.attr("class"),typeof currentImage.attr("class"),currentImage.hasClass("first"));
+    if( currentImage.hasClass("first")){
+      currentImage.removeClass('active');
+      $('.last').addClass('active');
     } else {
-      actualImage.removeClass('active').prev().addClass('active')
+      currentImage.removeClass('active').prev().addClass('active');
     }
   }
 
   if(event.which === 39){
-    var actualImage=$('.active')
-    console.log(actualImage)
-    console.log(actualImage.attr("class"),typeof actualImage.attr("class"),actualImage.hasClass("last"))
-    if( actualImage.hasClass("last") === true){
-      actualImage.removeClass('active')
-      $('.first').addClass('active')
+    var currentImage=$('.active');
+    console.log(currentImage);
+    console.log(currentImage.attr("class"),typeof currentImage.attr("class"),currentImage.hasClass("last"));
+    if( currentImage.hasClass("last")){
+      currentImage.removeClass('active');
+      $('.first').addClass('active');
     } else {
-      actualImage.removeClass('active').next().addClass('active')
+      currentImage.removeClass('active').next().addClass('active');
     }
   }
 })
@@ -60,15 +60,11 @@ $(document).keydown(function(event){
 /*
 Clicchiamo sui pallini e mostriamo l'immagine corrispondente
 */
-$('.fas').click(function(){
-  console.log($(this))
-  $('.nav > i').each(function(index){
-    $( this ).removeClass('active')
-    console.log(index)
-  })
-  $('.images > img').each(function(index){
-    $( this ).removeClass('active')
-  })
-  $( this ).addClass('active')
-  console.log($('.images > img').index)
-})
+$('.nav > i').siblings().click(function(event){
+  console.log($(this));
+  var selectedElementIndex = $(this).index();
+  console.log(selectedElementIndex);
+  $('.active').removeClass('active');
+  $(this).addClass('active');
+  $('.images > img ').eq(selectedElementIndex).addClass('active');
+});
